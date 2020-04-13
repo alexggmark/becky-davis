@@ -1,0 +1,71 @@
+$color-background: #F6F6F6;
+$color-black: #150452;
+$color-white: #FFFFFF;
+$color-primary: #00ecb6;
+$color-secondary: #fddddf;
+$color-tertiary: #2a1673;
+$color-quaternary: #d3feec;
+
+$font-primary: 'Font1';
+$font-secondary: 'Font2';
+$font-tertiary: 'Font3';
+
+$width-lg: 1080px;
+$width-md: 800px;
+$width-sm: 100%;
+
+$breakpoint-lg: 1250px;
+$breakpoint-md: 950px;
+$breakpoint-sm: 560px;
+
+@font-face {
+  src: url('~@/assets/fonts/font1.ttf') format('truetype');
+  font-family: 'Font1';
+}
+
+@font-face {
+  src: url('~@/assets/fonts/font2.ttf') format('truetype');
+  font-family: 'Font2';
+}
+
+@font-face {
+  src: url('~@/assets/fonts/font3.ttf') format('truetype');
+  font-family: 'Font3';
+}
+
+@mixin container {
+  width: $width-sm;
+  margin: 0 auto;
+
+  @media screen and (min-width: $breakpoint-md) {
+    width: $width-md;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
+    width: $width-lg;
+  }
+}
+
+body {
+  background-color: $color-background;
+  color: $color-black;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    font-family: $font-secondary;
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .shadow {
+    box-shadow: 0px 10px 22px -9px rgba(0,0,0,0.33);
+  }
+}
