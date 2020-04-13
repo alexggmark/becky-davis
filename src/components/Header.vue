@@ -1,6 +1,7 @@
 <template>
   <header class="header">
     <div class="header__container">
+      <div class="header__burger-menu">///</div>
       <div class="header__logo">
         becky<span class="header__logo--highlight">davis</span>
       </div>
@@ -13,6 +14,7 @@
         </ul>
         <button class="header__contact">Contact me</button>
       </div>
+      <div class="header__burger-contact">///</div>
     </div>
   </header>
 </template>
@@ -50,7 +52,7 @@ export default {
 
   &__navigation {
     align-items: center;
-    display: flex;
+    display: none;
     font-family: $font-secondary;
     text-transform: lowercase;
 
@@ -85,6 +87,28 @@ export default {
     font-size: 14px;
     margin-left: 2.5rem;
     padding: 0.75rem 1.5rem;
+  }
+
+  &__burger-menu {
+    display: block;
+  }
+
+  &__burger-contact {
+    display: block;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    &__navigation {
+      display: flex;
+    }
+
+    &__burger-menu {
+      display: none;
+    }
+
+    &__burger-contact {
+      display: none;
+    }
   }
 }
 </style>

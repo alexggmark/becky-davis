@@ -23,21 +23,13 @@ export default {
 <style lang="scss">
 .content-section {
   background-color: $color-white;
-  background: linear-gradient(90deg, #{$color-white} 50%, #{$color-secondary} 51%);
   margin: 1rem 0;
-
-  &.reverse {
-    background: linear-gradient(-90deg, #{$color-white} 50%, #{$color-quaternary} 51%);
-  }
 
   &__container {
     @include container;
     display: flex;
+    flex-flow: column-reverse;
     min-height: 600px;
-
-    .reverse & {
-      flex-flow: row-reverse;
-    }
   }
 
   &__content {
@@ -46,12 +38,8 @@ export default {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    padding: 0 5rem 0 0;
-    width: 66.6%;
-
-    .reverse & {
-      padding: 0 0 0 5rem;
-    }
+    padding: 2rem;
+    text-align: center;
   }
 
   &__image {
@@ -59,17 +47,17 @@ export default {
     box-sizing: border-box;
     background-color: $color-secondary;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    padding: 2rem 0 4rem;
     position: relative;
-    width: 33.3%;
+    width: 100%;
+
+    img {
+      max-height: 250px;
+    }
 
     .reverse & {
       background-color: $color-quaternary;
-      justify-content: flex-start;
-    }
-
-    &--inner {
-      width: 60%;
     }
   }
 
@@ -86,23 +74,79 @@ export default {
     align-items: center;
     background-color: $color-black;
     border-radius: 100%;
+    bottom: -18px;
     display: flex;
     height: 35px;
     justify-content: center;
-    left: -18px;
+    left: auto;
     position: absolute;
     width: 35px;
 
-    .reverse & {
-      left: auto;
-      right: -18px;
+    img {
+      transform: rotate(90deg);
+      width: 14px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    background: linear-gradient(90deg, #{$color-white} 50%, #{$color-secondary} 51%);
+
+    &.reverse {
+      background: linear-gradient(-90deg, #{$color-white} 50%, #{$color-quaternary} 51%);
     }
 
-    img {
-      width: 14px;
+    &__container {
+      flex-flow: row;
+      min-height: 600px;
 
       .reverse & {
-        transform: rotate(180deg);
+        flex-flow: row-reverse;
+      }
+    }
+
+    &__content {
+      padding: 0 5rem 0 0;
+      text-align: left;
+      width: 66.6%;
+
+      .reverse & {
+        padding: 0 0 0 5rem;
+      }
+    }
+
+    &__image {
+      justify-content: flex-end;
+      padding: 0;
+      width: 33.3%;
+
+      img {
+        max-height: 100%;
+      }
+
+      .reverse & {
+        justify-content: flex-start;
+      }
+
+      &--inner {
+        width: 60%;
+      }
+    }
+
+    &__button {
+      bottom: auto;
+      left: -18px;
+
+      .reverse & {
+        left: auto;
+        right: -18px;
+      }
+
+      img {
+        transform: rotate(0deg);
+
+        .reverse & {
+          transform: rotate(180deg);
+        }
       }
     }
   }

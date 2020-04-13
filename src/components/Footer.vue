@@ -51,14 +51,15 @@ export default {
 
   &__container {
     @include container;
-    align-items: flex-start;
+    align-items: center;
     display: flex;
+    flex-flow: column;
     justify-content: space-between;
   }
 
   &__column {
     padding: 0 1rem;
-    width: 33%;
+    width: calc(100% - 2rem);
   }
 
   &__title {
@@ -83,6 +84,17 @@ export default {
       &:hover {
         color: $color-primary;
       }
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    &__container {
+      align-items: flex-start;
+      flex-flow: row;
+    }
+
+    &__column {
+      width: 33%;
     }
   }
 }
