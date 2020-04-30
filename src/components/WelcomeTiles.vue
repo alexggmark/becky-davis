@@ -1,22 +1,25 @@
 <template>
   <section class="welcome">
     <div class="welcome__container">
-      <div class="welcome__selfie"></div>
-      <div class="welcome__tile" v-for="item in items" :key="item.title">
-        <div class="welcome__tile--inner">
-          <h3 class="welcome__callout">Branding</h3>
-          <h2 class="welcome__title">{{item.title}}</h2>
-          <img class="welcome__image" :src="item.img">
+      <flickity carousel="flickity" :options="flickityOptions">
+        <div class="welcome__tile" v-for="(item, index) in items" :key="item.title + index">
+          <div class="welcome__tile--inner">
+            <h3 class="welcome__callout">Branding</h3>
+            <h2 class="welcome__title">{{item.title}}</h2>
+            <img class="welcome__image" :src="item.img">
+          </div>
+          <div class="welcome__button shadow">
+            <img src="@/assets/img/next.svg">
+          </div>
         </div>
-        <div class="welcome__button shadow">
-          <img src="@/assets/img/next.svg">
-        </div>
-      </div>
+      </flickity>
     </div>
   </section>
 </template>
 
 <script>
+import Flickity from 'vue-flickity'
+
 export default {
   data() {
     return {
@@ -32,9 +35,22 @@ export default {
         {
           title: 'Operational Experience in Major Companies',
           img: require('@/assets/img/pad1.png'),
+        },
+        {
+          title: 'Operational Experience in Major Companies',
+          img: require('@/assets/img/pad1.png'),
         }
-      ]
+      ],
+      flickityOptions: {
+        initialIndex: 3,
+        prevNextButtons: false,
+        pageDots: false,
+        wrapAround: true
+      }
     }
+  },
+  components: {
+    Flickity,
   }
 }
 </script>
@@ -43,7 +59,6 @@ export default {
 .welcome {
   &__container {
     @include container;
-    display: flex;
     padding: 2rem 0;
   }
 
@@ -52,7 +67,8 @@ export default {
     border-radius: 3px;
     color: $color-white;
     display: flex;
-    margin: 0 1.1rem;
+    margin: 0 1.1rem 2rem;
+    min-width: 240px;
     position: relative;
     text-align: center;
     width: 25%;
@@ -104,16 +120,6 @@ export default {
     img {
       width: 14px;
     }
-  }
-
-  &__selfie {
-    background: url('~@/assets/img/selfie.png');
-    background-color: $color-tertiary;
-    background-size: cover;
-    border-radius: 3px;
-    color: $color-white;
-    margin: 0 1.1rem;
-    width: 25%;
   }
 }
 </style>
