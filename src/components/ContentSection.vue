@@ -1,5 +1,5 @@
 <template>
-  <section class="content-section" :class="{'reverse': reversed}">
+  <section class="content-section" :class="{'reversed': reversed}">
     <div class="content-section__container">
       <div class="content-section__content">
         <h2 class="content-section__title">Operational Experience in Major Companies</h2>
@@ -56,7 +56,7 @@ export default {
       max-height: 250px;
     }
 
-    .reverse & {
+    .reversed & {
       background-color: $color-quaternary;
     }
   }
@@ -91,7 +91,7 @@ export default {
   @media screen and (min-width: $breakpoint-md) {
     background: linear-gradient(90deg, #{$color-white} 50%, #{$color-secondary} 51%);
 
-    &.reverse {
+    &.reversed {
       background: linear-gradient(-90deg, #{$color-white} 50%, #{$color-quaternary} 51%);
     }
 
@@ -99,7 +99,7 @@ export default {
       flex-flow: row;
       min-height: 600px;
 
-      .reverse & {
+      .reversed & {
         flex-flow: row-reverse;
       }
     }
@@ -109,7 +109,7 @@ export default {
       text-align: left;
       width: 66.6%;
 
-      .reverse & {
+      .reversed & {
         padding: 0 0 0 5rem;
       }
     }
@@ -123,7 +123,7 @@ export default {
         max-height: 100%;
       }
 
-      .reverse & {
+      .reversed & {
         justify-content: flex-start;
       }
 
@@ -136,7 +136,7 @@ export default {
       bottom: auto;
       left: -18px;
 
-      .reverse & {
+      .reversed & {
         left: auto;
         right: -18px;
       }
@@ -144,7 +144,7 @@ export default {
       img {
         transform: rotate(0deg);
 
-        .reverse & {
+        .reversed & {
           transform: rotate(180deg);
         }
       }
